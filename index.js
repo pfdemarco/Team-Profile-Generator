@@ -1,6 +1,38 @@
 const inq = require ("inquirer");
 const fs = require("fs");
 
+//prompt for the employee
+function newEmployee() {
+  inq.prompt([
+    {
+      type: 'list',
+      name: "memberType",
+      message:"What type of employee are you adding?",
+      choices: ['Manager', 'Engineer', 'Intern', 'None']
+    }
+  ]).then((userEntry) => {
+    //figure out which choice they made
+    switch (this.memberType){
+      case 'Manager'://promt for input ?
+        
+      case 'Engineer'://prompt for input
+
+      case 'Intern'://prompt for input
+
+      case 'None'://run a finishing function?
+
+    }
+  });
+}
+
+
+//{
+//  type: 'input',
+//  name: 'name',
+//  message: 'Please enter Engineers name',
+//},
+
+
 // The application must include Employee, Manager, Engineer, and Intern classes. The tests for these classes (in the _tests_ directory) must ALL pass.
 // The first class is an Employee parent class with the following properties and methods:
 
