@@ -1,9 +1,7 @@
 const Engineer = require("./Engineer");
 const Intern = require("./Intern");
 const Manager = require("./Manager");
-const inq = require ("inquirer");
-const fs = require("fs");
-
+c
 class Employee {
   constructor (name, id, email) {
     this.name = name;
@@ -12,7 +10,7 @@ class Employee {
   }
 
   getName() {
-
+    return name;
   };
 
   getID() {

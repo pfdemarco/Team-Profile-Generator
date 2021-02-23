@@ -8,8 +8,8 @@ class Engineer{
 
   };
 
-  getRole() {
-
+  getRole(role) {
+    return role;
   };
 
 }

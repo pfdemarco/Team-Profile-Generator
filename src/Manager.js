@@ -1,3 +1,11 @@
+class Manager{
+  constructor(officeNumber){
+    this.officeNumber=officeNumber;
+  }
+  getRole(role){
+    return role;
+  };
+}
 
 module.exports = Manager;
 
