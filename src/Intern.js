@@ -1,4 +1,12 @@
-const ExpandPrompt = require("inquirer/lib/prompts/expand");
+class Intern {
+  constructor (school) {
+    this.school = school;
+  };
+
+  getSchool(school) {
+    return school;
+  }
+}
 
 module.exports = Intern;
 
