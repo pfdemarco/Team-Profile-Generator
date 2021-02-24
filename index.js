@@ -4,6 +4,8 @@ const Engineer = require("./src/Engineer");
 const Intern = require("./src/Intern");
 const Manager = require("./src/Manager");
 
+let htmlUserInput = [];
+
 //prompt for the employee
 function newEmployee() {
   inq.prompt([
@@ -11,24 +13,24 @@ function newEmployee() {
       type: 'list',
       name: "memberType",
       message:"What type of employee are you adding?",
-      choices: ['Manager', 'Engineer', 'Intern', 'None']//can i call this from external functions 
+      choices: ['Manager', 'Engineer', 'Intern', 'None']
     }
   ])
   .then((userInput) => {
     console.log(userInput);
     //figure out which choice they made
     switch (userInput.memberType){
-      case 'Manager'://promt for input ?
+      case 'Manager'://promt for manager info
         promptManager()
         break;
-      case 'Engineer'://prompt for input
+      case 'Engineer'://prompt for enginerr info
         promptEngineer()
         break;
-      case 'Intern'://prompt for input
+      case 'Intern'://prompt for intern info
         promptIntern()
         break;
-      case 'None'://run a finishing function?
-        break;
+      case 'None'://fin`
+        break;//make th html file here because we are done
     }
   });
     
@@ -59,9 +61,9 @@ function promptManager() {
   ])
   .then((userInput) => {
     const manager = new Manager(userInput.name,userInput.id,userInput.email,userInput.officeNum);
-    console.log(manager);//thjis gives you the entire json object
+    console.log(manager);//this gives you the entire json object
     newEmployee();//this takes you back to the main question
-  })
+  });
 }
 
 function promptEngineer() {
@@ -89,9 +91,9 @@ function promptEngineer() {
   ])
   .then((userInput) => {
     const engineer = new Engineer(userInput.name,userInput.id,userInput.email,userInput.githubUN);
-    console.log(engineer);//thjis gives you the entire json object
+    console.log(engineer);//this gives you the entire json object
     newEmployee();//this takes you back to the main question
-  })
+  });
 }
 
 function promptIntern() {
@@ -119,10 +121,39 @@ function promptIntern() {
   ])
   .then((userInput) => {
     const intern = new Intern(userInput.name,userInput.id,userInput.email,userInput.school);
-    console.log(intern);//thjis gives you the entire json object
+    console.log(intern);//this gives you the entire json object
     newEmployee();//this takes you back to the main question
-  })
+  });
 }
+
+function makeHTML(employeeRole, ){
+  return `
+    <html>
+      <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Team profile generator. Make a html page based on cmd line input">
+        <meta name="keywords" content="Team card builder">
+        <meta name="author" content="Patrick F Demarco">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Team Profile Generator</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+      </head>
+      <body>
+        <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+          <div class="card-header">Header</div>
+            <div class="card-body">
+              <h5 class="card-title">Secondary card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+
+        <!--bootstrap popper and javascript-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>    
+      </body>
+    </html>
+  `
+};
 
 newEmployee();
 
