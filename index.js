@@ -4,7 +4,11 @@ const Engineer = require("./src/Engineer");
 const Intern = require("./src/Intern");
 const Manager = require("./src/Manager");
 
-let htmlUserInput = [];
+const objData = {
+  manData: [],
+  engData: [],
+  intData: [],
+};
 
 //prompt for the employee
 function newEmployee() {
@@ -30,6 +34,7 @@ function newEmployee() {
         promptIntern()
         break;
       case 'None'://fin`
+      makeHTMLFile();
         break;//make th html file here because we are done
     }
   });
@@ -62,6 +67,7 @@ function promptManager() {
   .then((userInput) => {
     const manager = new Manager(userInput.name,userInput.id,userInput.email,userInput.officeNum);
     console.log(manager);//this gives you the entire json object
+    objData.manData.push(manager);
     newEmployee();//this takes you back to the main question
   });
 }
@@ -92,6 +98,7 @@ function promptEngineer() {
   .then((userInput) => {
     const engineer = new Engineer(userInput.name,userInput.id,userInput.email,userInput.githubUN);
     console.log(engineer);//this gives you the entire json object
+    objData.engData.push(engineer);
     newEmployee();//this takes you back to the main question
   });
 }
@@ -122,40 +129,262 @@ function promptIntern() {
   .then((userInput) => {
     const intern = new Intern(userInput.name,userInput.id,userInput.email,userInput.school);
     console.log(intern);//this gives you the entire json object
+    objData.intData.push(intern);
     newEmployee();//this takes you back to the main question
   });
 }
 
-function makeHTML(employeeRole, ){
-  return `
-    <html>
-      <head>
-        <meta charset="UTF-8">
-        <meta name="description" content="Team profile generator. Make a html page based on cmd line input">
-        <meta name="keywords" content="Team card builder">
-        <meta name="author" content="Patrick F Demarco">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Team Profile Generator</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-
-      </head>
-      <body>
-        <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-          <div class="card-header">Header</div>
-            <div class="card-body">
-              <h5 class="card-title">Secondary card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
+const createHTML = () =>
+  // INSERT HTML FILE HERE 
+  `<!DOCTYPE html>
+  <html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <title>Employee Cards</title>
+  </head>
+  
+  <body>
+    <section class="hero is-small is-primary mb-3">
+      <div class="hero-body">
+        <h1 class="title has-text-centered">
+          My Team
+        </h1>
+      </div>
+    </section>
+  
+  
+    <div class="columns is-centered has-text-centered">
+      <!-- MANAGER -->
+      <div class="column is-two-thirds has-text-centered is-centered">
+        <div class="card is-one-third has-text-centered ">
+  
+   ${createManagerCollection()}
         </div>
+      </div>
+    </div>
+      <!-- ENGINEER -->
+    <div class="columns has-text-centered is-centered">
+      <div class="column is-one-third">
+      ${createEngineerCollection()}
+      </div>
+  
+      <!-- INTERN -->
+      <div class="column is-one-third">
+        <div class="card is-one-third has-text-centered ">
+    ${createInternCollection()}
+         </div>
+     </div>
+    </div>
+  
+  </body>
+  
+  </html>`
 
-        <!--bootstrap popper and javascript-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>    
-      </body>
-    </html>
-  `
-};
+  // FUNCTION FOR MAKING FILE 
+const makeHTMLFile = () => {
+  // console.log(teamOBJ)
+  // teamOBJ.managers.forEach(manager => {
+  //   console.log(createManagerCard(manager))
+  // })
+  fs.writeFile('main.html', createHTML(), (err) => {
+    err ? console.log(err, "Something went wrong :(") : console.log('Team created - check *final* folder to see the finished product. ')
+  })
+}
+
+// ================================================================
+// functions for creating 'manager cards'
+// ================================================================
+function createManagerCard(manager) {
+  return `<div class="card is-one-third has-text-centered ">
+   
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+      </div>
+      <div class="media-content">
+        <p class="title is-4">Manager <i class="fas fa-briefcase"></i></p>
+        <p class="subtitle is-6">${manager.name}</p>
+      </div>
+    </div>
+  
+    <div class="content">
+      <p>Employee ID: ${manager.id}</p>
+      <a target="_blank" href="mailto:${manager.email}">${manager.email}</a>
+      <p>Office Number: ${manager.office}</p>
+    </div>
+  </div>
+  </div>`
+}
+// ================================================================
+// iterate over each array in teamOBJ, create an 'managercard' for EACH manager. This allows a user to add more than 1 manager if applicable 
+// ================================================================
+
+function createManagerCollection(){
+  let managerCollection = "";
+  objData.manData.forEach(manager => {
+    managerCollection += createManagerCard(manager);
+  })
+  return managerCollection;
+}
+
+// ================================================================
+// functions for creating 'engineer cards'
+// ================================================================
+function createEngineerCard(engineer) {
+  return `<div class="card is-one-third has-text-centered ">
+   
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+      </div>
+      <div class="media-content">
+        <p class="title is-4">Engineer <i class="fas fa-briefcase"></i></p>
+        <p class="subtitle is-6">${engineer.name}</p>
+      </div>
+    </div>
+  
+    <div class="content">
+      <p>Employee ID: ${engineer.id}</p>
+      <a target="_blank" href="mailto:${engineer.email}">${engineer.email}</a>
+      <p>GitHub User Name: ${engineer.githubUN}</p>
+    </div>
+  </div>
+  </div>`
+}
+
+function createEngineerCollection(){
+  let engineerCollection = "";
+  objData.engData.forEach(engineer => {
+    engineerCollection += createEngineerCard(engineer);
+  })
+  return engineerCollection;
+}
+
+// ================================================================
+// functions for creating 'engineer cards'
+// ================================================================
+function createInternCard(intern) {
+  return `<div class="card is-one-third has-text-centered ">
+   
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+      </div>
+      <div class="media-content">
+        <p class="title is-4">Intern <i class="fas fa-briefcase"></i></p>
+        <p class="subtitle is-6">${intern.name}</p>
+      </div>
+    </div>
+  
+    <div class="content">
+      <p>Employee ID: ${intern.id}</p>
+      <a target="_blank" href="mailto:${intern.email}">${intern.email}</a>
+      <p>GitHub User Name: ${intern.githubUN}</p>
+    </div>
+  </div>
+  </div>`
+}
+
+function createInternCollection(){
+  let internCollection = "";
+  objData.intData.forEach(intern => {
+    internCollection += createInternCard(intern);
+  })
+  return internCollection;
+}
 
 newEmployee();
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function makeHTML(employeeRole, ){
+//   return `
+//     <html>
+//       <head>
+//         <meta charset="UTF-8">
+//         <meta name="description" content="Team profile generator. Make a html page based on cmd line input">
+//         <meta name="keywords" content="Team card builder">
+//         <meta name="author" content="Patrick F Demarco">
+//         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//         <title>Team Profile Generator</title>
+//         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+//       </head>
+//       <body>
+//         <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+//           <div class="card-header">Header</div>
+//             <div class="card-body">
+//               <h5 class="card-title">Secondary card title</h5>
+//               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+//             </div>
+//         </div>
+
+//         <!--bootstrap popper and javascript-->
+//         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>    
+//       </body>
+//     </html>
+//   `
+// };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// {
+//   type: "input"
+//   name: "email",
+//   message: "Enter  Email",
+//   validate: function (email) {
+//       valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+//       if (valid) {
+//           return true;
+//       } else {
+//           console.log("Please enter a valid email")
+//           return false;
+//       }
+//   }
+// },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //{
 
