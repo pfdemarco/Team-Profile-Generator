@@ -284,7 +284,7 @@ function createInternCard(intern) {
     <div class="content">
       <p>Employee ID: ${intern.id}</p>
       <a target="_blank" href="mailto:${intern.email}">${intern.email}</a>
-      <p>GitHub User Name: ${intern.githubUN}</p>
+      <p>School Name: ${intern.school}</p>
     </div>
   </div>
   </div>`
