@@ -18,7 +18,7 @@ class Employee {
   };
 
   getRole () {
-    return "Employee";
+    return "Employee";//should this use the child class that is calling it?
   }
 
 }

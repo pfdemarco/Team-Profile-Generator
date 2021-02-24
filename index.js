@@ -1,21 +1,10 @@
 const inq = require ("inquirer");
 const fs = require("fs");
 const Engineer = require("./src/Engineer");
+const Intern = require("./src/Intern");
+const Manager = require("./src/Manager");
 
-function promptEngineer() {
-  inq.prompt([
-    {
-      type:'input',
-      name:"name",
-      message:"Enter Engineer Name:",
-    }
-  ])
-  .then((userInput) => {
-    const engineer = new Engineer(userInput.name,"1","pfdemarco@homtail.com", "pfdemarco");
-    console.log(engineer);
-    newEmployee();
-  })
-}
+
 
 //prompt for the employee
 function newEmployee() {
@@ -43,6 +32,96 @@ function newEmployee() {
     }
   });
     
+}
+
+function promptManager() {
+  inq.prompt([
+    {
+      type:'input',
+      name:"name",
+      message:"Enter Manager Name:",
+    },
+    {
+      type:'input',
+      name:"id",
+      message:"Enter Manager ID:",
+    },
+    {
+      type:'input',
+      name:"email",
+      message:"Enter Manager Email:",
+    },
+    {
+      type:'input',
+      name:"officeNum",
+      message:"Enter Manager Office #:",
+    },
+  ])
+  .then((userInput) => {
+    const manager = new Manager(userInput.name,userInput.id,userInput.email,userInput.officeNum);
+    console.log(manager);//thjis gives you teh entire json object
+    newEmployee();//this takes you back to teh main question
+  })
+}
+
+function promptEngineer() {
+  inq.prompt([
+    {
+      type:'input',
+      name:"name",
+      message:"Enter Engineer Name:",
+    },
+    {
+      type:'input',
+      name:"id",
+      message:"Enter Engineer ID:",
+    },
+    {
+      type:'input',
+      name:"email",
+      message:"Enter Engineer Email:",
+    },
+    {
+      type:'input',
+      name:"githubUN",
+      message:"Enter Engineer GitHub Username:",
+    },
+  ])
+  .then((userInput) => {
+    const engineer = new Engineer(userInput.name,userInput.id,userInput.email,userInput.githubUN);
+    console.log(engineer);//thjis gives you teh entire json object
+    newEmployee();//this takes you back to teh main question
+  })
+}
+
+function promptIntern() {
+  inq.prompt([
+    {
+      type:'input',
+      name:"name",
+      message:"Enter Intern Name:",
+    },
+    {
+      type:'input',
+      name:"id",
+      message:"Enter Intern ID:",
+    },
+    {
+      type:'input',
+      name:"email",
+      message:"Enter Intern Email:",
+    },
+    {
+      type:'input',
+      name:"githubUN",
+      message:"Enter Intern School:",
+    },
+  ])
+  .then((userInput) => {
+    const Intern = new Intern(userInput.name,userInput.id,userInput.email,userInput.school);
+    console.log(intern);//thjis gives you teh entire json object
+    newEmployee();//this takes you back to teh main question
+  })
 }
 
 newEmployee();

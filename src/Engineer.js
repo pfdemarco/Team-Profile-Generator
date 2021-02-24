@@ -16,7 +16,7 @@ class Engineer extends Employee{
   };
 
 }
-const x = new Engineer("pat", "1","pfdemarco@homtail.com", "pfdemarco")
+const x = new Engineer(this.name,this.id,this.email,this.githubUN)
 console.log(x.getName());//
 
 module.exports = Engineer;
