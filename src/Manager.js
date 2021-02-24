@@ -12,7 +12,7 @@ class Manager extends Employee{
 
 }
 
-const x = new Manager(this.name, thia.id,this.email,this.officeNumber)
+const x = new Manager(this.name, this.id,this.email,this.officeNumber)
 console.log(x.getName());
 
 module.exports = Manager;

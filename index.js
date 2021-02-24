@@ -4,8 +4,6 @@ const Engineer = require("./src/Engineer");
 const Intern = require("./src/Intern");
 const Manager = require("./src/Manager");
 
-
-
 //prompt for the employee
 function newEmployee() {
   inq.prompt([
@@ -21,14 +19,16 @@ function newEmployee() {
     //figure out which choice they made
     switch (userInput.memberType){
       case 'Manager'://promt for input ?
-      
+        promptManager()
+        break;
       case 'Engineer'://prompt for input
         promptEngineer()
         break;
       case 'Intern'://prompt for input
-
+        promptIntern()
+        break;
       case 'None'://run a finishing function?
-
+        break;
     }
   });
     
@@ -59,8 +59,8 @@ function promptManager() {
   ])
   .then((userInput) => {
     const manager = new Manager(userInput.name,userInput.id,userInput.email,userInput.officeNum);
-    console.log(manager);//thjis gives you teh entire json object
-    newEmployee();//this takes you back to teh main question
+    console.log(manager);//thjis gives you the entire json object
+    newEmployee();//this takes you back to the main question
   })
 }
 
@@ -89,8 +89,8 @@ function promptEngineer() {
   ])
   .then((userInput) => {
     const engineer = new Engineer(userInput.name,userInput.id,userInput.email,userInput.githubUN);
-    console.log(engineer);//thjis gives you teh entire json object
-    newEmployee();//this takes you back to teh main question
+    console.log(engineer);//thjis gives you the entire json object
+    newEmployee();//this takes you back to the main question
   })
 }
 
@@ -118,9 +118,9 @@ function promptIntern() {
     },
   ])
   .then((userInput) => {
-    const Intern = new Intern(userInput.name,userInput.id,userInput.email,userInput.school);
-    console.log(intern);//thjis gives you teh entire json object
-    newEmployee();//this takes you back to teh main question
+    const intern = new Intern(userInput.name,userInput.id,userInput.email,userInput.school);
+    console.log(intern);//thjis gives you the entire json object
+    newEmployee();//this takes you back to the main question
   })
 }
 
