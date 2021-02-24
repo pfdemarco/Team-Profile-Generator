@@ -1,7 +1,3 @@
-const Engineer = require("./Engineer");
-const Intern = require("./Intern");
-const Manager = require("./Manager");
-c
 class Employee {
   constructor (name, id, email) {
     this.name = name;
@@ -10,22 +6,24 @@ class Employee {
   }
 
   getName() {
-    return name;
+    return this.name;
   };
 
   getID() {
-
+    return this.id;
   };
 
   getEmail() {
-
+    return this.email;
   };
 
   getRole () {
-    return Employee;
+    return "Employee";
   }
 
 }
+
+module.exports = Employee;
 
 //The first class is an Employee parent class with the following properties and methods:
 

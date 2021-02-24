@@ -1,5 +1,21 @@
 const inq = require ("inquirer");
 const fs = require("fs");
+const Engineer = require("./src/Engineer");
+
+function promptEngineer() {
+  inq.prompt([
+    {
+      type:'input',
+      name:"name",
+      message:"Enter Engineer Name:",
+    }
+  ])
+  .then((userInput) => {
+    const engineer = new Engineer(userInput.name,"1","pfdemarco@homtail.com", "pfdemarco");
+    console.log(engineer);
+    newEmployee();
+  })
+}
 
 //prompt for the employee
 function newEmployee() {
@@ -8,25 +24,31 @@ function newEmployee() {
       type: 'list',
       name: "memberType",
       message:"What type of employee are you adding?",
-      choices: ['Manager', 'Engineer', 'Intern', 'None']
+      choices: ['Manager', 'Engineer', 'Intern', 'None']//can i call this from external functions 
     }
-  ]).then((userEntry) => {
+  ])
+  .then((userInput) => {
+    console.log(userInput);
     //figure out which choice they made
-    switch (this.memberType){
+    switch (userInput.memberType){
       case 'Manager'://promt for input ?
-        
+      
       case 'Engineer'://prompt for input
-
+        promptEngineer()
+        break;
       case 'Intern'://prompt for input
 
       case 'None'://run a finishing function?
 
     }
   });
+    
 }
 
+newEmployee();
 
 //{
+
 //  type: 'input',
 //  name: 'name',
 //  message: 'Please enter Engineers name',

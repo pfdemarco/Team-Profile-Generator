@@ -1,0 +1,22 @@
+{
+  "name": "team-profile-generator-1",
+  "version": "1.0.0",
+  "description": "Make a command line tool that takes user input for team members and creates html pages based on that info",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pfdemarco/Team-Profile-Generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pfdemarco/Team-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/pfdemarco/Team-Profile-Generator#readme",
+  "dependencies": {
+    "inquirer": "^7.3.3"
+  }
+}

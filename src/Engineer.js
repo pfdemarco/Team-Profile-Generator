@@ -1,18 +1,23 @@
-class Engineer{
+const Employee = require("./Employee");
+
+class Engineer extends Employee{
   
-  constructor(githubUN){
+  constructor(name, id, email,githubUN){
+    super(name, id, email)
     this.githubUN=githubUN;
   }
 
   getGitHub() {
-
+    return this.githubUN;
   };
 
-  getRole(role) {
-    return role;
+  getRole() {//polymorphism
+    return "Engineer";
   };
 
 }
+const x = new Engineer("pat", "1","pfdemarco@homtail.com", "pfdemarco")
+console.log(x.getName());//
 
 module.exports = Engineer;
 
