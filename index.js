@@ -4,6 +4,7 @@ const Engineer = require("./src/Engineer");
 const Intern = require("./src/Intern");
 const Manager = require("./src/Manager");
 
+//create array of objects for man, eng, int cards
 const objData = {
   manData: [],
   engData: [],
@@ -11,6 +12,7 @@ const objData = {
 };
 
 //prompt for the employee
+//instructions say ask for the manager first its first in teh list you can add any number of man, eng, int
 function newEmployee() {
   inq.prompt([
     {
@@ -23,7 +25,7 @@ function newEmployee() {
   .then((userInput) => {
     console.log(userInput);
     //figure out which choice they made
-    switch (userInput.memberType){
+    switch (userInput.memberType){//always use the name: as the thing we want to switch on
       case 'Manager'://promt for manager info
         promptManager()
         break;
@@ -135,7 +137,8 @@ function promptIntern() {
 }
 
 const createHTML = () =>
-  // INSERT HTML FILE HERE 
+  // create the html page after the user is done entering in team info
+  //i like bulma 
   `<!DOCTYPE html>
   <html lang="en">
   
@@ -145,13 +148,13 @@ const createHTML = () =>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <title>Employee Cards</title>
+    <title>The Dream Team</title>
   </head>
   
   <body>
-    <section class="hero is-small is-primary mb-3">
+    <section class="hero is-small is-info mb-3">
       <div class="hero-body">
-        <h1 class="title has-text-centered">
+        <h1 class="title has-text-centered has-text-grey-darker has-text">
           The Dream Team
         </h1>
       </div>
@@ -184,13 +187,14 @@ const createHTML = () =>
   
   </html>`
 
-  // FUNCTION FOR MAKING FILE 
+  // make the file in the root directory as main.html
 const makeHTMLFile = () => {
   fs.writeFile('main.html', createHTML(), (err) => {
-    err ? console.log(err, "Something went wrong :(") : console.log('Team created - check main.html folder to see the finished product. ')
+    err ? console.log(err, "Something went wrong :(") : console.log('Team created - check main.html to see the finished product. ')
   })
 }
 
+//manager card creation based on array object
 function createManagerCard(manager) {
   //console.log(manager.officeNumber);
   //console.log(manager.officeNum);this returns undefined WHY!>!>!?!?!?!?!?!
@@ -224,6 +228,7 @@ function createManagerCollection(){
   return managerCollection;
 }
 
+//engineer card creation based on array object
 function createEngineerCard(engineer) {
   return `<div class="card is-one-third has-text-centered ">
    
@@ -254,6 +259,7 @@ function createEngineerCollection(){
   return engineerCollection;
 }
 
+//intern card creation based on array object
 function createInternCard(intern) {
   return `<div class="card is-one-third has-text-centered ">
    
