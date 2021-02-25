@@ -61,7 +61,7 @@ function promptManager() {
     {
       type:'input',
       name:"officeNum",
-      message:"Enter Manager Office #:",
+      message:"Enter Manager Office number:",
     },
   ])
   .then((userInput) => {
@@ -122,7 +122,7 @@ function promptIntern() {
     },
     {
       type:'input',
-      name:"githubUN",
+      name:"school",
       message:"Enter Intern School:",
     },
   ])
@@ -152,7 +152,7 @@ const createHTML = () =>
     <section class="hero is-small is-primary mb-3">
       <div class="hero-body">
         <h1 class="title has-text-centered">
-          My Team
+          The Dream Team
         </h1>
       </div>
     </section>
@@ -162,23 +162,22 @@ const createHTML = () =>
       <!-- MANAGER -->
       <div class="column is-two-thirds has-text-centered is-centered">
         <div class="card is-one-third has-text-centered ">
-  
-   ${createManagerCollection()}
+          ${createManagerCollection()}
         </div>
       </div>
     </div>
       <!-- ENGINEER -->
     <div class="columns has-text-centered is-centered">
       <div class="column is-one-third">
-      ${createEngineerCollection()}
+        ${createEngineerCollection()}
       </div>
   
       <!-- INTERN -->
       <div class="column is-one-third">
         <div class="card is-one-third has-text-centered ">
-    ${createInternCollection()}
-         </div>
-     </div>
+          ${createInternCollection()}
+        </div>
+      </div>
     </div>
   
   </body>
@@ -187,19 +186,15 @@ const createHTML = () =>
 
   // FUNCTION FOR MAKING FILE 
 const makeHTMLFile = () => {
-  // console.log(teamOBJ)
-  // teamOBJ.managers.forEach(manager => {
-  //   console.log(createManagerCard(manager))
-  // })
   fs.writeFile('main.html', createHTML(), (err) => {
-    err ? console.log(err, "Something went wrong :(") : console.log('Team created - check *final* folder to see the finished product. ')
+    err ? console.log(err, "Something went wrong :(") : console.log('Team created - check main.html folder to see the finished product. ')
   })
 }
 
-// ================================================================
-// functions for creating 'manager cards'
-// ================================================================
 function createManagerCard(manager) {
+  //console.log(manager.officeNumber);
+  //console.log(manager.officeNum);this returns undefined WHY!>!>!?!?!?!?!?!
+  //console.log(manager);
   return `<div class="card is-one-third has-text-centered ">
    
   <div class="card-content">
@@ -208,21 +203,18 @@ function createManagerCard(manager) {
       </div>
       <div class="media-content">
         <p class="title is-4">Manager <i class="fas fa-briefcase"></i></p>
-        <p class="subtitle is-6">${manager.name}</p>
+        <p class="subtitle is-6">Name: ${manager.name}</p>
       </div>
     </div>
   
     <div class="content">
       <p>Employee ID: ${manager.id}</p>
-      <a target="_blank" href="mailto:${manager.email}">${manager.email}</a>
-      <p>Office Number: ${manager.office}</p>
+      <p>Email: <a target="_blank" href="mailto:${manager.email}">${manager.email}</a></p>
+      <p>Office Number: ${manager.officeNumber}</p>
     </div>
   </div>
   </div>`
 }
-// ================================================================
-// iterate over each array in teamOBJ, create an 'managercard' for EACH manager. This allows a user to add more than 1 manager if applicable 
-// ================================================================
 
 function createManagerCollection(){
   let managerCollection = "";
@@ -232,9 +224,6 @@ function createManagerCollection(){
   return managerCollection;
 }
 
-// ================================================================
-// functions for creating 'engineer cards'
-// ================================================================
 function createEngineerCard(engineer) {
   return `<div class="card is-one-third has-text-centered ">
    
@@ -244,14 +233,14 @@ function createEngineerCard(engineer) {
       </div>
       <div class="media-content">
         <p class="title is-4">Engineer <i class="fas fa-briefcase"></i></p>
-        <p class="subtitle is-6">${engineer.name}</p>
+        <p class="subtitle is-6">Name: ${engineer.name}</p>
       </div>
     </div>
   
     <div class="content">
       <p>Employee ID: ${engineer.id}</p>
-      <a target="_blank" href="mailto:${engineer.email}">${engineer.email}</a>
-      <p>GitHub User Name: ${engineer.githubUN}</p>
+      <p>Email: <a target="_blank" href="mailto:${engineer.email}">${engineer.email}</a></p>
+      <p>Github username: <a target="_blank" href="https://github.com/${engineer.githubUN}">${engineer.githubUN}</a></p>
     </div>
   </div>
   </div>`
@@ -265,9 +254,6 @@ function createEngineerCollection(){
   return engineerCollection;
 }
 
-// ================================================================
-// functions for creating 'engineer cards'
-// ================================================================
 function createInternCard(intern) {
   return `<div class="card is-one-third has-text-centered ">
    
@@ -277,13 +263,13 @@ function createInternCard(intern) {
       </div>
       <div class="media-content">
         <p class="title is-4">Intern <i class="fas fa-briefcase"></i></p>
-        <p class="subtitle is-6">${intern.name}</p>
+        <p class="subtitle is-6">Name: ${intern.name}</p>
       </div>
     </div>
   
     <div class="content">
       <p>Employee ID: ${intern.id}</p>
-      <a target="_blank" href="mailto:${intern.email}">${intern.email}</a>
+      <p>Email: <a target="_blank" href="mailto:${intern.email}">${intern.email}</a></p>
       <p>School Name: ${intern.school}</p>
     </div>
   </div>
