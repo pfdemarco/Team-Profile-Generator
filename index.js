@@ -232,7 +232,7 @@ function createEngineerCard(engineer) {
       <div class="media-left">
       </div>
       <div class="media-content">
-        <p class="title is-4">Engineer <i class="fas fa-briefcase"></i></p>
+        <p class="title is-4">Engineer <i class="fas fa-drafting-compass"></i></p>
         <p class="subtitle is-6">Name: ${engineer.name}</p>
       </div>
     </div>
@@ -262,7 +262,7 @@ function createInternCard(intern) {
       <div class="media-left">
       </div>
       <div class="media-content">
-        <p class="title is-4">Intern <i class="fas fa-briefcase"></i></p>
+        <p class="title is-4">Intern <i class="fas fa-user-graduate"></i></p>
         <p class="subtitle is-6">Name: ${intern.name}</p>
       </div>
     </div>
