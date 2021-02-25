@@ -201,7 +201,7 @@ function createManagerCard(manager) {
   //console.log(manager);
   return `<div class="card is-one-third has-text-centered ">
    
-  <div class="card-content">
+  <div class="card-content has-background-success-light">
     <div class="media">
       <div class="media-left">
       </div>
@@ -232,7 +232,7 @@ function createManagerCollection(){
 function createEngineerCard(engineer) {
   return `<div class="card is-one-third has-text-centered ">
    
-  <div class="card-content">
+  <div class="card-content has-background-success-light">
     <div class="media">
       <div class="media-left">
       </div>
@@ -263,7 +263,7 @@ function createEngineerCollection(){
 function createInternCard(intern) {
   return `<div class="card is-one-third has-text-centered ">
    
-  <div class="card-content">
+  <div class="card-content has-background-success-light">
     <div class="media">
       <div class="media-left">
       </div>
