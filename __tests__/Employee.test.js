@@ -11,6 +11,7 @@ test('can set an employee name', () => {
 test('can set an employee id', () => {
     const id = 1;
     const employee = new Employee("", id, ""); 
+
     expect(employee.getID()).toBe(1);
 })
 
@@ -19,4 +20,10 @@ test('can set employee email', () => {
     const employee = new Employee("", "" , email);
     
     expect(employee.getEmail()).toBe('emp@gmail.com');
+})
+
+test('can set Role', () => {
+  const employee = new Employee(); 
+
+    expect(employee.getRole()).toBe('Employee');
 })
