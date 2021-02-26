@@ -149,9 +149,16 @@ const createHTML = () =>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <title>The Dream Team</title>
+
+    <!--style>
+      body{
+        background-image: url('team.jpg');
+      }
+    </style-->
   </head>
   
   <body>
+    
     <section class="hero is-small is-info mb-3">
       <div class="hero-body">
         <h1 class="title has-text-centered has-text-grey-darker has-text">

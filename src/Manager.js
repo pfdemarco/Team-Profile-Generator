@@ -1,6 +1,6 @@
 const Employee = require("./Employee");
 
-class Manager extends Employee{
+class Manager extends Employee{//dont forget this need to extends to the parent then use super to inherit the properties from there
 
   constructor(name, id, email, officeNumber){
     super(name,id,email)
