@@ -1,99 +1,49 @@
 # Team-Profile-Generator
 
-https://drive.google.com/file/d/1vRqcPmkCmqole4hiGnV_9idodYQfixNP/view
-
 Make a command line tool that takes user input for team members and creates html pages based on that info
 
-The application must include Employee, Manager, Engineer, and Intern classes. The tests for these classes (in the _tests_ directory) must ALL pass.
-The first class is an Employee parent class with the following properties and methods:
+This application runs by typing node index.js into a command line.
 
-name
+The user will be prompted with 4 selections Manager, Engineer, Intern or None.
 
-id
+Selecting Manager prompts
 
-email
+*  Enter Manager Name:
 
-getName()
+*  Enter Manager ID:
 
-getId()
+*  Enter Manager Email:
 
-getEmail()
+*  Enter Manager Office number:
 
-getRole()—returns 'Employee'
 
-The other three classes will extend Employee.
-In addition to Employee's properties and methods, Manager will also have the following:
+Selecting Engineer prompts
 
-officeNumber
+*   Enter Engineer Name:
 
-getRole()—overridden to return 'Manager'
+*   Enter Engineer ID:
 
-In addition to Employee's properties and methods, Engineer will also have the following:
+*   Enter Engineer Email:
 
-github—GitHub username
+*   Enter Engineer GitHub Username:
 
-getGithub()
 
-getRole()—overridden to return 'Engineer'
+Selecting Intern prompts
+*  Enter Intern Name:
+*  Enter Intern ID:
+*  Enter Intern Email:
+*  Enter Intern School:
 
-In addition to Employee's properties and methods, Intern will also have the following:
+Selecting None stops the prompts and creates the html file with the employee cards in main.html.
 
-school
+<img src="App_The_Dream_Team.jpg">
 
-getSchool()
+# GitHub repo
+https://github.com/pfdemarco/Team-Profile-Generator
 
-getRole()—overridden to return 'Intern'
 
-Finally, although it’s not a requirement, consider adding validation to ensure that user input is in the proper format.
+# Video of test and app
+https://drive.google.com/file/d/1vRqcPmkCmqole4hiGnV_9idodYQfixNP/view
 
-Grading Requirements
-This homework is graded based on the following criteria:
 
-Deliverables: 15%
 
-A sample HTML file generated using the application must be submitted.
-
-Your GitHub repository containing your application code.
-
-Walkthrough Video: 32%
-
-A walkthrough video that demonstrates the functionality of the Team Profile Generator and passing tests must be submitted, and a link to the video should be included in your README file.
-
-The walkthrough video must show all four tests passing from the command line.
-
-The walkthrough video must demonstrate how a user would invoke the application from the command line.
-
-The walkthrough video must demonstrate how a user would enter responses to all of the prompts in the application.
-
-The walkthrough video must demonstrate a generated HTML file that matches the user input.
-
-Technical Acceptance Criteria: 40%
-
-Satisfies all of the preceding acceptance criteria plus the following:
-
-Uses the Inquirer package.
-
-Uses the Jest package for a suite of unit tests.
-
-The application must have Employee, Manager, Engineer, and Intern classes.
-
-Repository Quality: 13%
-
-Repository has a unique name.
-
-Repository follows best practices for file structure and naming conventions.
-
-Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-Repository contains multiple descriptive commit messages.
-
-Repository contains a high-quality readme with description and a link to a walkthrough video.
-
-Review
-You are required to submit the following for review:
-
-A walkthrough video that demonstrates the functionality of the application and passing tests.
-
-A sample HTML file generated using your application.
-
-The URL of the GitHub repository, with a unique name and a readme describing the project.
