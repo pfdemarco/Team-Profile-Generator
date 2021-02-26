@@ -1,17 +1,17 @@
-const { TestScheduler } = require('jest');
-const Manager = require('../lib/Manager');
+const { TestScheduler } = require('../jest.config');
+const Manager = require('../src/Manager');
 
-test("Sets employee info and uses functions from parent class", () => {
-    const name = "x";
-    const id = 1234;
-    const email = "x@gmail.com";
-    const officeNumber = 303;
-    const manager = new Manager("x", 1234, "x@gmail.com", 303);
-    expect(manager.getName()).toEqual(name);
+test('can set an office number', () => {
+    const officeNumber  = 8675309;
+    const manager = new Manager("", "" , "", officeNumber);
+
+    expect(manager.officeNumber).toBe(8675309); 
 });
 
-test("Sets and receives office number", () => {
-    const officeNumber = 303;
-    const manager = new Manager("x", 1234, "x@gmail.com", 303);
-    expect(manager.getOfficeNumber()).toEqual(officeNumber);
-});
+test('can set Role', () => {
+
+    
+    const manager = new Manager(); 
+
+    expect(manager.getRole()).toBe('Manager');
+})

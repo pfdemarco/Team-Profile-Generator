@@ -1,17 +1,18 @@
-const { TestScheduler } = require('jest');
-const Intern = require('../lib/Intern');
 
-test("Sets employee info and uses functions from parent class", () => {
-    const name = "Tixm";
-    const id = 1234;
-    const email = "x@gmail.com";
-    const school = "hvcc";
-    const intern = new Intern("x", 1234, "x@gmail.com", "hvcc");
-    expect(intern.getName()).toEqual(name);
+const { TestScheduler } = require('../jest.config');
+const Intern = require('../src/Intern');
+
+test('can set an school number', () => {
+    const school  = "University of NH";
+    const intern = new Intern("", "" , "", school);
+
+    expect(intern.school).toBe("University of NH"); 
 });
 
-test("Sets and receives school name", () => {
-    const school = "hvcc";
-    const intern = new Intern("x", 1234, "x@gmail.com", "hvcc");
-    expect(intern.getSchool()).toEqual(school);
-});
+test('can set Role', () => {
+
+    
+    const intern = new Intern(); 
+
+    expect(intern.getRole()).toBe('Intern');
+})
