@@ -46,4 +46,7 @@ https://github.com/pfdemarco/Team-Profile-Generator
 https://drive.google.com/file/d/1vRqcPmkCmqole4hiGnV_9idodYQfixNP/view
 
 
+# Sample of HTML page created 
+https://pfdemarco.github.io/Team-Profile-Generator/main.html
+
 
